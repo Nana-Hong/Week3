@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <h1 style="color:White;font-size:30px;background-color:brown">Week3: 2D Graphics</h1>
+ <script>window.onerror = function(error, url, line) {parent.postMessage(["console", "❌ -- [ERROR] -- ❌ -- ⚠️ " + error], "*")};var cl = console.log;console.log = function () {var msg = [...arguments].join();parent.postMessage(["console", msg], "*");  }  </script><script src = "https://mimicproject.com/libs/maximilian.v.0.1.js">
+</script>
+  <style>
+     canvas {background-color: #cc3300;}
+  </style>
+</head>
+
+<body>
+    <!-- The Canvas tag sets up a screen in the browser that we can draw to. -->
+    <canvas id="canvas" width="600px" height="500px"></canvas>
+
+    <script type="text/javascript">
+
+        var mouseX;
+        var mouseY;
+        var TWO_PI = Math.PI * 2
+        
+        var canvas = document.querySelector("canvas");
+        
+        
+        var context = canvas.getContext("2d");
+
+        canvas.addEventListener('mousemove', getMouse, false); //clear the screen
+
+        //here's our function 'getMouse'.
+        function getMouse(mousePosition) {
+
+                mouseX = mousePosition.layerX;
+                mouseY = mousePosition.layerY;
+        }
+
+
+        function draw() {           		
+        var segments = 50;
+        var spacing = TWO_PI / segments;
+        var spacing2 = TWO_PI / 250;
+        var spacing3 = TWO_PI / 500;
+        var spacing4 = TWO_PI / 700;
+        var spacing5 = TWO_PI / 800;
+		//var position = 250;
+        var radius = 50;
+        var radius2 = 150;
+        var radius3 = 300;
+        var radius4 = 300;
+        var radius5 = 120;
+
+		context.clearRect(0,0, canvas.width, canvas.height);
+
+            //draw circles
+
+          if (mouseX < 80) {
+          context.strokeStyle = "#ff1919"; 
+          } else if (mouseX >= 80, mouseX < 110){
+          context.strokeStyle = "#00FFFF";
+          } else if (mouseX >= 110, mouseX < 140) {
+          context.strokeStyle = "#8000ff";
+          } else if (mouseX >= 140, mouseX < 170){
+          context.strokeStyle = "#00FFFF";
+          } else if (mouseX >= 170, mouseX < 200){
+          context.strokeStyle = "#00ff40";
+          } else if (mouseX >= 200, mouseX < 230){
+          context.strokeStyle = "#0080ff";
+          } else if (mouseX >= 230, mouseX < 260){
+          context.strokeStyle = "#ff8000";
+          } else if (mouseX >= 260, mouseX < 290){
+          context.strokeStyle = "#ff00ff";
+          } else if (mouseX >= 290, mouseX < 310){
+          context.strokeStyle = "#ffff00";
+          } else if (mouseX >= 310, mouseX < 340){
+          context.strokeStyle = "#1a0000";
+          } else if (mouseX >= 340, mouseX < 370){
+          context.strokeStyle = "#ffffff";
+          } else if (mouseX >= 370, mouseX < 400){
+          context.strokeStyle = "#ffff99";
+          } else if (mouseX >= 400, mouseX < 430){
+          context.strokeStyle = "#b3d9ff";
+          } else if (mouseX >= 430, mouseX < 460){
+          context.strokeStyle = "#ccffcc";
+          } else if (mouseX >= 460, mouseX < 490){
+          context.strokeStyle = "#ffccff";
+          } else if (mouseX >= 490, mouseX < 510){
+          context.strokeStyle = "#9966ff";
+          } else {
+          context.strokeStyle = "#71b04a";
+          }
+
+          
+          
+		context.beginPath();
+
+		for (var i = 0; i < segments; i++) {
+
+			context.lineTo(mouseX + Math.cos(spacing * i) * radius, mouseY  + Math.sin(spacing * i) * radius);
+
+            // Finish the line by joining it to the first
+            context.lineTo(mouseX + Math.cos(0) * radius,mouseY + Math.sin(0) * radius); 
+        }
+            context.stroke(); //draw the outline			
+            context.closePath();
+
+
+      
+      context.beginPath();
+
+		for (var i2 = 0; i2 < segments; i2++) {
+
+		context.strokeStyle = "#eee6ff"; //set the line colour to #6aa84f
+		var x = Math.sin(spacing2 * i2 * (mouseX/10)) * Math.cos(spacing2 * i2 * (mouseY/30)) * radius2;
+        var y = Math.sin(spacing2 * i2* (mouseX/10)) * Math.sin(spacing2 * i2 * (mouseY/30)) * radius2;  
+          
+	context.lineTo(x+radius,y+radius); 
+            }
+
+            context.stroke(); //draw the outline			
+            context.closePath();
+          
+        
+          
+        context.beginPath();
+
+		for (var i3 = 0; i3 < segments; i3++) {
+
+		context.strokeStyle = "#ffd9b3"; //set the line colour to #6aa84f
+		var x2 = Math.sin(spacing3 * i3 * (mouseX/10)) * Math.cos(spacing3 * i3 * (mouseY/30)) * radius3;
+        var y2 = Math.sin(spacing3 * i3* (mouseX/10)) * Math.sin(spacing3 * i3 * (mouseY/30)) * radius3;  
+          
+	context.lineTo(x2+600,y2+radius); 
+            }
+
+            context.stroke(); //draw the outline			
+            context.closePath();
+      
+        context.beginPath();
+
+		for (var i4 = 0; i4 < segments; i4++) {
+
+		context.strokeStyle = "#ff9933"; //set the line colour to #6aa84f
+		var x3 = Math.sin(spacing4 * i4 * (mouseX/10)) * Math.cos(spacing4 * i4 * (mouseY/30)) * radius4;
+        var y3 = Math.sin(spacing4 * i4* (mouseX/10)) * Math.sin(spacing4 * i4 * (mouseY/30)) * radius4;  
+          
+	context.lineTo(x3+radius,y3+500); 
+            }
+
+            context.stroke(); //draw the outline			
+            context.closePath();
+          
+          
+                  context.beginPath();
+
+		for (var i5 = 0; i5 < segments; i5++) {
+
+		context.strokeStyle = "#e6e6ff"; //set the line colour to #6aa84f
+		var x4 = Math.sin(spacing4 * i5 * (mouseX/10)) * Math.cos(spacing5 * i5 * (mouseY/30)) * radius5;
+        var y4 = Math.sin(spacing4 * i5* (mouseX/10)) * Math.sin(spacing5 * i5 * (mouseY/30)) * radius5;  
+          
+	context.lineTo(x4+500,y4+460); 
+            }
+
+            context.stroke(); //draw the outline			
+            context.closePath();
+          
+          
+          
+          
+          requestAnimationFrame(draw);
+        }
+      
+      
+        //request the first animation frame
+        requestAnimationFrame(draw);
+        //the end.
+   
+</script>
+  </body>
+</html>
